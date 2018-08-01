@@ -1,0 +1,5 @@
+com\vehiclemanagement\controller\VehicleController.class
+com\vehiclemanagement\dao\VehicleDaoImpl.class
+com\vehiclemanagement\model\Vehicle.class
+com\vehiclemanagement\controller\VehicleURIConstants.class
+com\vehiclemanagement\dao\VehicleDao.class

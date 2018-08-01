@@ -48,16 +48,22 @@ public class VehicleController {
 	private VehicleDao vehicleDao;
 	
 	@RequestMapping(value = VehicleURIConstants.GET_VEHICLE, method = RequestMethod.GET)
-	public @ResponseBody Vehicle getVehicle(@PathVariable("id") String vID) {
+	public @ResponseBody Vehicle getVehicle(@PathVariable("id") String vID, HttpServletResponse response) {
 		logger.info("Start getVehicle. ID="+vID);
 		Vehicle vehicleList = vehicleDao.getVehicle(vID);
+		if(vehicleList.getVehicleID() == null) {
+			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+		}
 		return vehicleList;
 	}
 	
 	@RequestMapping(value = VehicleURIConstants.GET_ALL_VEHICLES, method = RequestMethod.GET)
-	public @ResponseBody List<Vehicle> getAllVehicles() {
+	public @ResponseBody List<Vehicle> getAllVehicles( HttpServletResponse response) {
 		logger.info("Start getAllVehicles.");
 		List<Vehicle> vehicles = vehicleDao.getAllVehicles();
+		if(vehicles.size() == 0) {
+			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+		}
 		return vehicles;
 	}
 	
@@ -74,8 +80,14 @@ public class VehicleController {
 		System.out.println("Delete Vhicle");
 		logger.info("Start deleteVehicle.");
 		Vehicle vehicle = vehicleDao.getVehicle(vID);
-		vehicleDao.deleteVehicle(vID);
-		return vehicle;
+		System.out.println(vehicle.getVehicleID());
+		if(vehicle.getVehicleID() != null) {
+			vehicleDao.deleteVehicle(vID);
+		}else {
+			System.out.println("No Content"+HttpServletResponse.SC_NO_CONTENT);
+			response.setStatus(HttpServletResponse.SC_NO_CONTENT);	
+		}
+		return new Vehicle();
 	}
 	
 }

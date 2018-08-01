@@ -15,30 +15,8 @@ public class VehicleServiceTest {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
     }
-
-    @Test
-    public void testRetrieveAllVehicles() {
-    	RestAssured.baseURI ="http://localhost:8080/vehicleservice/rest";
-    	RequestSpecification request = RestAssured.given();
-    	request.header("Content-Type", "application/json");
-    	Response response = request.get("/vehicles");
-    	int statuscode = response.getStatusCode();
-    	Assert.assertEquals(statuscode, 200);
-
-    }
-    
-    @Test
-    public void testRetrieveByVehicleID() {
-    	RestAssured.baseURI ="http://localhost:8080/vehicleservice/rest";
-    	RequestSpecification request = RestAssured.given();
-    	request.header("Content-Type", "application/json");
-    	Response response = request.get("/vehicle/222");
-    	int statuscode = response.getStatusCode();
-    	Assert.assertEquals(statuscode, 200);
-
-    }
-
-    @Test
+	
+	@Test
     public void testcreateVehicle() {
     	RestAssured.baseURI ="http://localhost:8080/vehicleservice/rest";
     	RequestSpecification request = RestAssured.given();
@@ -57,7 +35,31 @@ public class VehicleServiceTest {
     	Assert.assertEquals(statuscode, 201);
 
     }
+
+
+    @Test
+    public void testRetrieveAllVehicles() {
+    	RestAssured.baseURI ="http://localhost:8080/vehicleservice/rest";
+    	RequestSpecification request = RestAssured.given();
+    	request.header("Content-Type", "application/json");
+    	Response response = request.get("/vehicles");
+    	int statuscode = response.getStatusCode();
+    	Assert.assertEquals(statuscode, 200);
+
+    }
     
+    @Test
+    public void testRetrieveByVehicleID() {
+    	RestAssured.baseURI ="http://localhost:8080/vehicleservice/rest";
+    	RequestSpecification request = RestAssured.given();
+    	request.header("Content-Type", "application/json");
+    	Response response = request.get("/vehicle/444");
+    	int statuscode = response.getStatusCode();
+    	Assert.assertEquals(statuscode, 200);
+
+    }
+
+        
     @Test
     public void testdeleteVehiclebyID() {
     	RestAssured.baseURI ="http://localhost:8080/vehicleservice/rest";

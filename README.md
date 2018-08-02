@@ -8,9 +8,9 @@ a.	Instruction to run it locally:
 4.	Deploy the WAR in application server.
 5.	Also the application was developed by integrating with H2 database. Hence a local database to be created with name “testing” and have the user name and password as “sa”. If any change in database name, the same need to be update in “servlet-context.xml”
 6.	H2 database can be downloaded from the path. Click on h2.bat file under bin folder and create the database with name “testing” and username, password as “sa” http://www.h2database.com/html/download.html
-7.	Execute the below create statement after creating the database with name “testing” 
+7.	Execute the below create statement after creating the database with name “testing”. Table name can be configured in Vehicle.java class. Here I have used the table with name VEHICLEDETAILS1
 
-CREATE TABLE VEHICLEDETAILS(ID VARCHAR2(10) NOT NULL PRIMARY KEY, NUMBER VARCHAR2(10), TYPE VARCHAR2(20), NAME VARCHAR2(20));
+CREATE TABLE VEHICLEDETAILS1(ID VARCHAR2(10) NOT NULL PRIMARY KEY, NUMBER VARCHAR2(10), TYPE VARCHAR2(20), NAME VARCHAR2(20));
 
 b.	Endpoints and their description along with / c. Sample request and response:
 ---------------------------------------------------------------------------------
